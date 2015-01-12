@@ -1,0 +1,44 @@
+<div id="content_id">
+    个人资料管理
+    <script>
+        $.ajax({
+            //请求方式为get
+            type:"GET",
+            //json文件位置
+            url:"data/left-menu.json",
+            //返回数据格式为json
+            dataType: "json",
+            //请求成功完成后要执行的方法
+            success: function( result ) {
+                if( result.data ){
+                    var data = result.data;
+                    var accd ='';
+                    $.each( data,function( i, item ){
+                        var group = item.group ;
+                        var gorupData = item.data;
+                        accd += '<div  title="'+group+'" ><ul>';
+
+                        $.each( gorupData,function( i, item ){
+                            var title = item.title;
+                            var icon = item.icon;
+                            var url = item.url;
+
+                            accd += '<li><div class="menu-item"><a href="javascript:void(0);" class="easyui-linkbutton" plain="true" ';
+                            accd += 'onclick="javascript:addTabHref(\''+title+'\',\''+url+'\');return false;">';
+                            accd += '<img src="' + icon + '" />'+ title+' </a></div></li>';
+
+                        });
+
+                        accd += '</ul></div>';
+                    })
+                    $("#content_id").append( accd );
+                    $.parser.parse();
+                }
+
+            },
+            error: function() {
+                alert('失败');
+            }
+        });
+    </script>
+</div>

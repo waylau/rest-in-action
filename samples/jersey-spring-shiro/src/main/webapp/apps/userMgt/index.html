@@ -1,0 +1,20 @@
+<div>
+    <h1>用户管理 示例</h1>
+
+    <div class="dataTable">
+        <table id="dataTable"  class="easyui-datagrid" style="width:100;height:100"
+               data-options="rownumbers:true,toolbar:'#tb',pagination:true,fit:true,singleSelect:true, loadMsg: '正在努力加载数据，请稍后...',remoteSort:false">
+
+            <thead>
+            <tr>
+                <th data-options="field:'id',width:80" hidden="true">ID</th>
+                <th data-options="field:'realname',width:260,sortable:true ">真实名称</th>
+                <th data-options="field:'username',width:260,sortable:true ">用户名</th>
+                <th data-options="field:'password',width:260,sortable:true ">密码</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+</div>
+<script src="apps/userMgt/scripts/userMgt.js"></script>

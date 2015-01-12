@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	    <property name="securityManager" ref="securityManager"/>
+	    <!-- 可根据项目的URL进行替换 -->
+	    <property name="loginUrl" value="/login.html"/>
+	    <property name="successUrl" value="/home.html"/>
+	    <property name="unauthorizedUrl" value="/unauthorized.html"/> 
+	    <!-- 因为每个已经定义的javax.servlet.Filter类型的bean都可以在链的定义中通过bean名
+	    称获取，所以filters属性不是必须出现的。但是可以根据需要通过filters属性替换filter
+	    实例或者为filter起别名 -->
+ 
+	    <property name="filterChainDefinitions">
+	        <value>
+	        	/login.html = anon
+	        	/unauthorized.html = anon
+	        	/home.html = authc
+	        	# some example chain definitions:
+	            /admin/** = authc, roles[admin]
+	            /docs/** = authc, perms[document:read]
+	            /** = authc
+	            # more URL-to-FilterChain definitions here
+	        </value>
+	    </property>
+	</bean>
+	<!-- 定义应用上下文的 javax.servlet.Filter beans。这些beans 会被上面定义的shiroFilter自
+	动感知，并提供给“filterChainDefinitions”属性使用。或者也可根据需要手动的将他们添加在
+	shiroFilter bean的“filters”属性下的Map标签中。 -->
+ 
+ 
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	    <!-- 单realm应用。如果需要配置多个realm，使用“realms”属性 -->
+	    <property name="realm" ref="myRealm"/>
+	    <!-- 默认使用servlet容器session。下面是使用shiro 原生session的例子(细节请参考帮助文档)-->
+	    <!-- <property name="sessionMode" value="native"/> -->
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<!-- 定义连接后台安全数据源的realm -->
+	<bean id="myRealm" class="com.waylau.rest.shiro.ShiroDbRealm">
+	</bean>
+	 
+</beans>

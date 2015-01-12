@@ -1,0 +1,48 @@
+<div>
+    <style>
+        .desktop {
+            height:500px
+        }
+        .deskicon {
+            width:100px;
+            height:100px;
+            text-align: center;
+            padding:0px auto;
+            color:#fff;
+            position: absolute;
+            display:table;
+            cursor: pointer;
+        }
+        .deskicon div{
+            vertical-align:middle;
+            display:table-cell;
+            cursor: pointer;
+        }
+        .deskicon div p{
+            cursor: pointer;
+        }
+        .deskicon div img{
+            margin: 0px auto;
+            vertical-align:middle;
+            cursor: pointer;
+        }
+        .deskicon div em{
+            font-style: normal;
+            font-weight: bold;
+            filter:glow(color=#555,strength=5);
+            text-shadow: 2px 2px 1px #555;
+            cursor: pointer;
+        }
+    </style>
+    <h1>desktop 桌面图标</h1>
+
+    <div class="desktop">
+
+    </div>
+    <script src="app/desktop/scripts/desktop.js"></script>
+    <script>
+
+        initAppItem();
+
+    </script>
+</div>

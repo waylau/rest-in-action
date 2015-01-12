@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Page title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width">
+
+    <link id="easyui_theme_id" rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="easyui-layout">
+
+<!--顶部区域-->
+<div class="top-layout" data-options="region:'north',border:false" >
+
+    <div class="top-left">
+
+        <a href="/">
+            <img class="logo" src="images/logo.png" alt="logo" />
+        </a>
+
+        <a href="/" class="easyui-linkbutton" data-options="plain:true"><h1 class="logo-text"> Easyui Scaffold</h1></a>
+    </div>
+
+    <div class="top-right">
+        <div class="top-menu">
+            <a id="person_detail_id" class="easyui-menubutton" plain="true" menu="#person_menu_id"> waylau</a>
+            <a id="msg_id" href="javascript:void(0);" class="easyui-linkbutton" plain="true"
+               onclick="javascript:addTabContent('消息','apps/msg/index.html' );return false;"> 消息</a>
+            <a id="theme_id" href="javascript:void(0);" class="easyui-linkbutton" plain="true"> 换肤</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" target="_blank" plain="true"
+               onclick="javascript:addTabHref('帮助', 'apps/help/index.html');return false;">帮助</a>
+        </div>
+
+    </div>
+
+
+    <div id="person_menu_id" style="width:90px;">
+        <div onclick="javascript:addTabHref('个人设置','apps/personal/index.html' );return false;"> 个人设置</div>
+        <div onclick="javascript:logout();return false;">退出</div>
+    </div>
+
+</div>
+
+<!--左侧导航-->
+<div class="left-layout" data-options="region:'west',split:false,title:'菜单'" >
+    <div id="left_menu_content_id" class="easyui-accordion" border="true"   fit="false"  >
+    </div>
+
+</div>
+
+<!--主内容区-->
+<div data-options="region:'center'" border="true">
+    <div id="tabs" class="easyui-tabs" fit="true" border="false">
+    </div>
+
+</div>
+
+<!--底部信息-->
+<div class="buttom-layout" data-options="region:'south',border:false" >
+    <div class="buttom-left">
+        版权所有：<a href="javascript:void(0);" class="easyui-linkbutton" target="_blank" plain="true"
+                onclick="javascript:window.open( 'http://www.waylau.com');return false;"> www.waylau.com</a>&nbsp &nbsp
+        &nbsp
+        version <a href="javascript:void(0);" class="easyui-linkbutton" target="_blank" plain="true"
+                   onclick="javascript:window.open( 'https://github.com/waylau/easyui-scaffold');return false;"> 0.9.1 </a>&nbsp &nbsp
+    </div>
+
+    <div class="buttom-right">
+        <div id="dateime_id"></div>
+    </div>
+
+</div>
+
+
+<script src="scripts/vendor/jquery.min.js"></script>
+<script src="scripts/vendor/jquery.easyui.min.js"></script>
+<script src="scripts/vendor/jquery.cookie.js"></script>
+
+<script src="scripts/easyui-theme-change.js"></script>
+<script src="scripts/jquery-loading.js"></script>
+<script src="scripts/msg.js"></script>
+<script src="scripts/date-util.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

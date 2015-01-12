@@ -1,0 +1,33 @@
+<div>
+   <h1>message 示例 消息提示示例</h1>
+
+   <button title="show" onclick="msgShow('警告','赖野')">msgShow</button>
+
+    <button title="show" onclick="msgAlert('警告','赖野')">msgAlert 无图</button>
+
+    <button title="show" onclick="msgAlert('警告','赖野','question')">msgAlert 图</button>
+
+    <button title="show" onclick="msgAlert('警告','赖野','i')">msgAlert i</button>
+
+    <button title="show" onclick="msgAlert('警告','1u','qu')">msgAlert qu</button>
+
+    <button title="show" onclick="msgConfirm('hi','boy',tellMe)">msgConfirm</button>
+
+    <button title="show" onclick="msgPrompt('hi','your name?',tellMeTrue)">msgConfirm</button>
+
+    <script>
+        var tellMe = function (data) {
+            if (data) {
+                msgShow('tellMe','hi girl');
+            }
+
+        };
+
+        var tellMeTrue = function (data) {
+            if (data) {
+                msgShow('my name',data);
+            }
+
+        };
+    </script>
+</div>

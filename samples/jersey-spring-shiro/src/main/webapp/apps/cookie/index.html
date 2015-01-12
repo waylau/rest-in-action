@@ -1,0 +1,40 @@
+<div>
+    <h1>cookie 示例</h1>
+
+    <p>登录窗口</p>
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-panel" title="New Topic" style="width:400px">
+        <div style="padding:10px 60px 20px 60px">
+            <form id="cookieLogin" method="post">
+                <table cellpadding="5">
+                    <tr>
+                        <td>Name:</td>
+                        <td><input class="easyui-textbox" type="text" name="username" data-options="required:true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Passwd:</td>
+                        <td><input class="easyui-textbox" type="password" name="password" data-options="required:true"/></td>
+                    </tr>
+                    <tr>
+                        <td>RemeberMe:</td>
+                        <td><label><input type="checkbox" name="rememberMe"  />RemeberMe</label></td>
+                    </tr>
+
+                </table>
+            </form>
+            <div style="text-align:center;padding:5px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">Submit</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function submitForm(){
+            $('#ff').form('submit');
+        }
+        function clearForm(){
+            $('#ff').form('clear');
+        }
+    </script>
+
+</div>
