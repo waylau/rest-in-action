@@ -11,7 +11,9 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-
+        
+	<bean id="myAuthenticationFilter" class="com.waylau.rest.shiro.MyAuthenticationFilter" />
+	
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 	    <property name="securityManager" ref="securityManager"/>
 	    <!-- 可根据项目的URL进行替换 -->
@@ -21,17 +23,22 @@
 	    <!-- 因为每个已经定义的javax.servlet.Filter类型的bean都可以在链的定义中通过bean名
 	    称获取，所以filters属性不是必须出现的。但是可以根据需要通过filters属性替换filter
 	    实例或者为filter起别名 -->
- 
+         <property name="filters">
+        	<map>
+        		<entry key="myAuthc" value-ref="myAuthenticationFilter" />
+        	</map>
+        </property>
 	    <property name="filterChainDefinitions">
 	        <value>
 	        	/login.html = anon
 	        	/unauthorized.html = anon
-	        	/home.html = authc
-	        	# some example chain definitions:
-	            /admin/** = authc, roles[admin]
-	            /docs/** = authc, perms[document:read]
-	            /** = authc
-	            # more URL-to-FilterChain definitions here
+	        	/rest/login = anon
+	        	/rest/hello = anon
+	        	/rest/getLogin = anon
+	        	/scripts/** = anon
+	        	/styles/** = anon
+ 	        	/** = myAuthc
+ 
 	        </value>
 	    </property>
 	</bean>

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	id="WebApp_ID" version="3.1">
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+ 
 	<display-name>Archetype Created Web Application</display-name>
 
 	<!-- spring start -->
@@ -37,7 +33,7 @@
 	<!-- spring end -->
 
 	<!-- shiro start -->
-	<!-- filter-name对应applicationContext.xml中定义的名字为“shiroFilter”的bean -->
+	<!-- filter-name对应applicationContext.xml中定义的名字为“shiroFilter”的bean  -->
 	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -46,8 +42,8 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-
-	<!-- 使用“/*”匹配所有请求，保证所有的可控请求都经过Shiro的过滤。通常这个filter-mapping 放置到最前面(其他filter-mapping前面)，保证它是过滤器链中第一个起作用的 -->
+ 
+	<!-- 使用“/*”匹配所有请求，保证所有的可控请求都经过Shiro的过滤。通常这个filter-mapping 放置到最前面(其他filter-mapping前面)，保证它是过滤器链中第一个起作用的-->
 	<filter-mapping>
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
