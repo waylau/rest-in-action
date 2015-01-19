@@ -49,23 +49,25 @@ public class LoginResource {
 
 		    //支持'remember me' (无需配置，内建的!):
 		    //token.setRememberMe(true);
-
 		    try {
 		        currentUser.login( token );
-		        resp = new Response();
 		        resp.setToken(username + password);
 		        resp.setId("001");
 		        //无异常，说明就是我们想要的!
 		    } catch ( UnknownAccountException uae ) {
 		        //username 不存在，给个错误提示?
+		    	 resp.setToken("");
 				uae.printStackTrace();
 		    } catch ( IncorrectCredentialsException ice ) {
+		    	 resp.setToken("");
 		        //password 不匹配，再输入?
 				ice.printStackTrace();
 		    } catch ( LockedAccountException lae ) {
+		    	 resp.setToken("");
 		        //账号锁住了，不能登入。给个提示?
 				lae.printStackTrace();
 		    } catch ( AuthenticationException ae ) {
+		    	 resp.setToken("");
 		        //未考虑到的问题 - 错误?
 				ae.printStackTrace();
 		    }

@@ -17,7 +17,12 @@ var loginFormSubmit = function () {
         //请求成功完成后要执行的方法
         success: function (result) {
             if (result) {
-                alert('成功');
+                var response = result;
+                if(response.token === ""){
+                    alert('验证失败');
+                }else{
+					window.location.href = 'home.html';
+                }
             }
 
         },
