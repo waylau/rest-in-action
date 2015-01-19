@@ -1,0 +1,68 @@
+[
+    {
+        "group": "分类1",
+        "icon":"icon-sum",
+        "data": [
+            {
+                "title": "message 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "apps/message/index.html",
+                "type":1
+            },
+            {
+                "title": "iframe loading 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "http://www.waylau.com/index.html",
+                "type":0
+            }
+            ,
+            {
+                "title": "progress 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "apps/progress/index.html",
+                "type":1
+            }
+            ,
+            {
+                "title": "datagrid 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "apps/datagrid/index.html",
+                "type":1
+            }
+            ,
+            {
+                "title": "cookie 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "apps/cookie/index.html",
+                "type":1
+            }
+            ,
+            {
+                "title": "userMgt 示例",
+                "icon": "images/left-menu/edit_48.png",
+                "url": "apps/userMgt/index.html",
+                "type":1
+            }
+
+        ]
+    },
+    {
+        "group": "分类2",
+        "icon":"icon-print",
+        "data": [
+            {
+                "title": "帮助",
+                "icon": "images/left-menu/remove_48.png",
+                "url": "apps/help/index.html",
+                "type":1
+            },
+            {
+                "title": "视频播放器",
+                "icon": "images/left-menu/remove_48.png",
+                "url": "apps/video/index.html",
+                "type":1
+            }
+
+        ]
+    }
+]

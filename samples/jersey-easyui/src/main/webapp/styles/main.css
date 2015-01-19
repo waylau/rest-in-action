@@ -1,0 +1,79 @@
+/**
+* 主界面样式
+*
+* Created by waylau.com on 2014/8/21.
+*/
+
+/*顶部区域样式*/
+.top-layout {
+    height: 60px;
+}
+
+.logo-text {
+    font-size:24px;
+    font-family:'SimHei' ;
+}
+.top-left {
+    float:left;
+    height: 60px;
+    text-align: center;
+    position: relative;
+}
+
+.top-left img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    border: 0
+}
+
+.top-right {
+    height: 60px;
+    float:right;
+    vertical-align: bottom;
+}
+
+.top-right .top-menu {
+    height: 22px;
+    margin-top: 34px;
+    margin-bottom: 0px;
+
+}
+
+/*左侧区域样式*/
+.left-layout {
+    width:180px;
+}
+
+
+/*左侧导航菜单样式*/
+.easyui-accordion ul{list-style-type:none;margin:0px; padding:10px;}
+.easyui-accordion ul li{ padding:0px;}
+.easyui-accordion ul li div{margin:2px 0px;padding-left:10px;padding-top:2px;text-align: left;border:0;}
+.easyui-accordion ul li div img{margin:4px ;vertical-align: middle; border: 0;width: 24px;height: 24px}
+
+
+/*底部区域样式*/
+.buttom-layout {
+    height:30px;
+}
+.buttom-left {
+    float: left;
+    padding-left: 5px;
+}
+.buttom-right {
+    float: right;
+    padding-right: 5px;
+}
+
+
+
+/*主题换肤样式*/
+
+.theme {
+      margin: 10px auto;
+}
+
+.theme img {
+    border: 0;
+}

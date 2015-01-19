@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Page title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width">
+
+    <link id="easyui_theme_id" rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="easyui-layout">
+
+ 
+ <table id="dg" title="My Users" class="easyui-datagrid" style="width:700px;height:250px"
+            toolbar="#toolbar" pagination="true"
+            rownumbers="true" fitColumns="true" singleSelect="true">
+        <thead>
+            <tr>
+                <th field="id" width="50">id</th>
+                <th field="username" width="50">username</th>
+                <th field="password" width="50">password</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+    </div>
+    
+    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+            closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">User Information</div>
+        <form id="fm" >
+            <div class="fitem">
+                <label>username</label>
+                <input name="username" class="easyui-textbox" required="true">
+            </div>
+            <div class="fitem">
+                <label>password</label>
+                <input name="password" class="easyui-textbox">
+            </div>
+ 
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+    </div>
+    <script type="text/javascript">
+       
+    </script>
+    <style type="text/css">
+        #fm{
+            margin:0;
+            padding:10px 30px;
+        }
+        .ftitle{
+            font-size:14px;
+            font-weight:bold;
+            padding:5px 0;
+            margin-bottom:10px;
+            border-bottom:1px solid #ccc;
+        }
+        .fitem{
+            margin-bottom:5px;
+        }
+        .fitem label{
+            display:inline-block;
+            width:80px;
+        }
+        .fitem input{
+            width:160px;
+        }
+    </style>
+
+<script src="scripts/vendor/jquery.min.js"></script>
+<script src="scripts/vendor/jquery.easyui.min.js"></script>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>
