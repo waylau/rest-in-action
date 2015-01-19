@@ -36,12 +36,9 @@ function saveUser(){
         dataType: "json",
         contentType:"application/json",
         //请求成功完成后要执行的方法
-        data:$('#fm').serialize() ,
+        data:JSON.stringify($("#fm").serializeObject()) ,
         success: function( data ) {
-            if( data ){
-            	 $('#dg').datagrid('loadData',data);
-            }
-
+        	getUsers();
         },
         error: function() {
             alert.show('失败');
@@ -68,8 +65,8 @@ function destroyUser(){
     }
 }
 
-$(function(){
-    $.ajax({
+function getUsers(){
+	 $.ajax({
         //请求方式为get
         type:"GET",
         //json文件位置
@@ -81,12 +78,15 @@ $(function(){
             if( data ){
             	 $('#dg').datagrid('loadData',data);
             }
-
         },
         error: function() {
             alert.show('失败');
         }
     });
+}
+
+$(function(){
+	getUsers();
 });
 
  
