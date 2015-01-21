@@ -12,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.waylau.rest.entity.ResposeBean;
 import com.waylau.rest.entity.User;
  
 
@@ -71,29 +70,16 @@ public class HelloResource {
     @GET
     @Path("users")
     @Produces(MediaType.APPLICATION_JSON)
-//    public List<User> getUsers() {
-//    	List<User> users = new ArrayList<User>();
-//    	
-//    	users.add(new User(1,"waylau","23"));
-//    	users.add(new User(2,"waylau2","24"));
-//    	users.add(new User(3,"waylau3","25"));
-// 
-//        return users;
-//    }
-    public ResposeBean<User> getUsersData() {
+    public List<User> getUsers() {
     	List<User> users = new ArrayList<User>();
     	
     	users.add(new User(1,"waylau","23"));
     	users.add(new User(2,"waylau2","24"));
     	users.add(new User(3,"waylau3","25"));
-    	
-    	ResposeBean<User> resp = new ResposeBean<User>();
-    	resp.setSuccess( true);
-    	resp.setMsg("成功");
-    	resp.setData(users);
-    	
-        return resp;
+ 
+        return users;
     }
+    
     /**
      * 根据 id 参数 返回 json 对象
      * 
@@ -144,6 +130,4 @@ public class HelloResource {
     	users.add(user);
         return users;
     }
-    
-
 }
