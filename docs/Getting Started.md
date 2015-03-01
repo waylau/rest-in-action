@@ -38,30 +38,7 @@ OK,这就是所有必需的环境。当然，你可以根据自己的喜好选�
 
 	mvn clean package
 
-打包成功，如下：
-	
-	[INFO]
-	[INFO] --- maven-war-plugin:2.2:war (default-war) @ simple-service-webapp ---
-	[INFO] Packaging webapp
-	[INFO] Assembling webapp [simple-service-webapp] in [D:\workspaceGithub\Jersey-2
-	.x-User-Guide-Demos\demo-1.4\simple-service-webapp\target\simple-service-webapp]
-	
-	[INFO] Processing war project
-	[INFO] Copying webapp resources [D:\workspaceGithub\Jersey-2.x-User-Guide-Demos\
-	demo-1.4\simple-service-webapp\src\main\webapp]
-	[INFO] Webapp assembled in [176 msecs]
-	[INFO] Building war: D:\workspaceGithub\Jersey-2.x-User-Guide-Demos\demo-1.4\sim
-	ple-service-webapp\target\simple-service-webapp.war
-	[INFO] WEB-INF\web.xml already added, skipping
-	[INFO] ------------------------------------------------------------------------
-	[INFO] BUILD SUCCESS
-	[INFO] ------------------------------------------------------------------------
-	[INFO] Total time: 02:29 min
-	[INFO] Finished at: 2014-08-30T10:05:56+08:00
-	[INFO] Final Memory: 12M/29M
-	[INFO] ------------------------------------------------------------------------
-
-打包的 WAR（位于`./target/simple-service-webapp.war`）可以将它部署到您任意的 Servlet 容器，比如 [Tomcat](http://tomcat.apache.org/)、 [Jetty](http://www.eclipse.org/jetty/)、JBoss 等。
+打包成功后，打包的 WAR（位于`./target/simple-service-webapp.war`）可以将它部署到您任意的 Servlet 容器，比如 [Tomcat](http://tomcat.apache.org/)、 [Jetty](http://www.eclipse.org/jetty/)、JBoss 等。
  
 ![target](http://i1288.photobucket.com/albums/b484/waylau/waylau%20blog/Jersey-2-User-Guide/14-002_zps4abe828a.jpg)
 
@@ -76,3 +53,7 @@ OK,这就是所有必需的环境。当然，你可以根据自己的喜好选�
 **注意**：部署 Jersey 项目，Servlet 容器版本应该是不低于2.5，如果想支持更高的特性(比如 JAX-RS 2.0 Async Support) ，Servlet容器版本应该是不低于3.0
 
 自此，第一个 REST 项目完成。
+
+##源码
+
+见 `simple-service-webapp`。
