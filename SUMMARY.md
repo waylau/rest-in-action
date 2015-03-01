@@ -2,4 +2,5 @@
 
 This is the summary of my book.
 
-* [1. REST Overview 总览](docs/REST Overview.md)
+* [REST Overview 总览](docs/REST Overview.md)
+* [Getting Started 开始](docs/Getting Started.md)
