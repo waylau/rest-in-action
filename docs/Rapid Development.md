@@ -17,7 +17,7 @@ Rapid Development 快速开发
 
 ###嵌入 Tomcat
 
-设置依赖
+设置插件
 
 	<plugin>
 		<groupId>org.apache.tomcat.maven</groupId>
@@ -71,7 +71,7 @@ Rapid Development 快速开发
 
 ###嵌入 Jetty
 
-设置依赖
+设置插件
 
 	<plugin>
 		<groupId>org.eclipse.jetty</groupId>
