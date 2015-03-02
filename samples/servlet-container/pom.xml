@@ -23,18 +23,18 @@
 				</configuration>
 			</plugin>
 			<!-- 如果内嵌 tomcat 就是去掉该段注释-->
-			<!-- -->
+			<!-- 
 			<plugin> 
 				<groupId>org.apache.tomcat.maven</groupId> 
 				<artifactId>tomcat7-maven-plugin</artifactId> 
 				<version>${tomcat7.version}</version> 
 			</plugin> 
-			
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.eclipse.jetty</groupId> -->
-<!-- 				<artifactId>jetty-maven-plugin</artifactId> -->
-<!-- 				<version>${jetty.version}</version> -->
-<!-- 			</plugin> -->
+			-->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+			</plugin>
 		</plugins>
 	</build>
 
