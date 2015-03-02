@@ -7,6 +7,9 @@ import javax.ws.rs.core.MediaType;
 
 /**
  * 根资源 (暴露在"myresource"路径)
+ * 
+ * @author waylau.com 
+ * 2015-3-1
  */
 @Path("myresource")
 public class MyResource {

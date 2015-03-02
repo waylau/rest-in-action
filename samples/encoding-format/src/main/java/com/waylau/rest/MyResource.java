@@ -23,6 +23,7 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Got it!";
+        return "你好，欢迎访问 www.waylau.com！";
     }
+ 
 }
