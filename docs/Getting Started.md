@@ -24,15 +24,6 @@ OK,这就是所有必需的环境。当然，你可以根据自己的喜好选�
 
 ![](../images/first-rest-app-01.jpg)
 
-这个是由 Jersey 提供 Maven archetype 用来创建的 web 项目，在你的项目里面随意调整 pom.xml 内的 groupId，包号和版本号就可以成为一个新的项目。此时，simple-service-webapp 已经创建， 符合 Maven 的项目结构：
-
-* 标准的管理配置文件 pom.xml
-* 源文件路径 src/main/java
-* 资源文件路径 src/main/resources
-* web 应用文件 src/main/webapp
-
-
-该项目包含一个名为 MyResouce 的JAX-RS 资源类。在 src/main/webapp/WEB-INF 下，它包含了标准的JavaEE Web 应用的 web.xml 部署描述符。项目中的最后一个组件是一个 index.jsp 页面作为这次 MyResource 资源类打包和部署的应用程序客户端。
 
 项目打包成 WAR,执行:
 

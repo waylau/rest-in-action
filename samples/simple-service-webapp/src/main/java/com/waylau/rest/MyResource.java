@@ -6,16 +6,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Root resource (exposed at "myresource" path)
+ * 根资源 (暴露在"myresource"路径)
  */
 @Path("myresource")
 public class MyResource {
 
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
+     * 方法处理 HTTP GET 请求。返回的对象以"text/plain"媒体类型
+	 * 给客户端
      *
-     * @return String that will be returned as a text/plain response.
+     * @return String 以 text/plain 形式响应
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
