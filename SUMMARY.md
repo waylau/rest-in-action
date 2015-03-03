@@ -8,4 +8,5 @@ This is the summary of my book.
 * [Rapid Development 快速开发](docs/Rapid Development.md)
 * [Encoding Format 处理编码问题](docs/Encoding Format.md)
 * [Custom ResourceConfig 自定义资源配置](docs/Custom ResourceConfig.md)
+* [Handle JSON and XML 处理 JSON 和 XML](docs/Handle JSON and XML.md)
 * To be continued ...未完待续...
