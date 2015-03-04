@@ -17,6 +17,12 @@ import javax.ws.rs.core.MediaType;
 
 import com.waylau.rest.bean.UserBean;
 
+/**
+ * User 资源 (暴露在"users"路径)
+ * 
+ * @author waylau.com 
+ * 2015-3-3
+ */
 @Path("users")
 public class UserResource {
 	
