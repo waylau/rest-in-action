@@ -20,9 +20,9 @@ OK,这就是所有必需的环境。当然，你可以根据自己的喜好选�
 
 	mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false -DgroupId=com.waylau -DartifactId=simple-service-webapp -Dpackage=com.waylau.rest -DarchetypeVersion=2.16
 
-![](../images/first-rest-app-00.jpg)
+![](http://99btgc01.info/uploads/2015/03/first-rest-app-00.jpg)
 
-![](../images/first-rest-app-01.jpg)
+![](http://99btgc01.info/uploads/2015/03/first-rest-app-01.jpg)
 
 
 项目打包成 WAR,执行:
