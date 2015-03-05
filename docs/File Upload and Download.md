@@ -69,6 +69,50 @@ File Upload and Download 文件上传、下载
 
 OK ，下载程序写完。
 
+###处理大数量传参下载的问题
+
+有时难免要传递的参数较大，GET 请求难以胜任，只能用 POST 来请求下载。
+
+下面例子就是用一个隐藏的 Form 表单来传参进行文件的下载：
+
+	var exportUrl = 'rest/files/excel/easyui-datagird'
+    var form=$("<form>");//定义一个form表单
+    form.attr("style","display:none");
+    form.attr("target","");
+    form.attr("method","post");
+    form.attr("action",exportUrl);
+    var input1=$("<input>");
+    input1.attr("type","hidden");
+    input1.attr("name","fileName");
+    input1.attr("value",fileName);
+    var input2=$("<input>");
+    input2.attr("type","hidden");
+    input2.attr("name","columns");
+    input2.attr("value",JSON.stringify(columns));
+    var input3=$("<input>");
+    input3.attr("type","hidden");
+    input3.attr("name","rowsData");
+    input3.attr("value",JSON.stringify(rows));
+    $("body").append(form);//将表单放置在页面中
+    form.append(input1);
+    form.append(input2);
+    form.append(input3);
+    form.submit().remove();;//表单提交并
+
+其中，input  就是用来传递参数的。input 的 name 属性是参数的名称，value 属性是参数的值。 
+
+服务端要做如下的处理：
+
+	@POST
+	@Path("excel/easyui-datagird")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	public Response jsonToExcle(@FormParam("fileName") String fileName,
+			@FormParam("columns") String columns,
+			@FormParam("rowsData") String rowsData) {
+		//这里是处理的业务逻辑代码
+	}
+
 ##文件上传
 
 上传文件稍微要复杂，需要 multipart/form-data 请求。
@@ -158,4 +202,8 @@ OK ，下载程序写完。
 ##源码
 
 见 `file-upload-down`。
+
+##参考
+
+* 突破 URL 传值限制 <http://www.waylau.com/url-length-limitation/>
 
