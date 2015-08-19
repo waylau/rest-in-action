@@ -7,6 +7,10 @@
 
 相反, Server-Sent Events (SSE) 是一种机制,一旦由客户端建立客户机-服务器的连接，就能让服务端异步地将数据从服务端推到客户端。当连接由客户端建立完成,服务端就提供数据,并决定新数据“块"可用时将其发送到客户端。当一个新的数据事件发生在服务端时,这个事件被服务端发送到客户端。因此,名称被称为 Server-Sent Events（服务器推送事件）。下面是支持服务端到客户端交互的技术总览:
 
+* 插件提供 socket 方式：比如利用 Flash XMLSocket，Java Applet 套接口，Activex 包装的 socket。
+	* 优点：原生 socket 的支持，与 PC 端的实现方式相似；
+	* 缺点：浏览器端需要装相应的插件；与 js 进行交互时复杂
+
 * Polling：轮询，重复发送新的请求到服务端。如果服务端没有新的数据，就发送适当的指示并关闭连接。然后客户端等待一段时间后,发送另一个请求(例如,一秒后)
 	* 优点：实现简单，无需做过多的更改
 	* 缺点：轮询的间隔过长，会导致用户不能及时接收到更新的数据；轮询的间隔过短，会导致查询请求过多，增加服务器端的负担。
@@ -19,9 +23,15 @@
 
 ![](../images/sse-real-time-web-02.jpg)
 
+* 基于 iframe 及 htmlfile 的流（streaming）方式：iframe 流方式是在页面中插入一个隐藏的 iframe，利用其src属性在服务器和客户端之间创建一条长链接，服务器向 iframe 传输数据（通常是 HTML，内有负责插入信息的 javascript），来实时更新页面。
+	* 优点：消息能够实时到达；
+	* 缺点：服务器维持着长连接期会消耗资源；iframe 不规范的用法；数据推送过程会有加载进度条显示，界面体验不好
+	
+![](../images/sse-real-time-web-09.jpg)
+
 * Server-Sent events：SSE 与 长轮询机制类似,区别是每个连接不只发送一个消息。客户端发送一个请求，服务端就保持这个连接直到有一个新的消息已经准备好了,那么它将消息发送回客户端,同时仍然保持这个连接是打开,这样这个连接就可以用于另一个可用消息的发送。一旦准备好了一个新消息,通过同一初始连接发送回客户端。客户端单独处理来自服务端传回的消息后不关闭连接。所以,SSE 通常重用一个连接处理多个消息(称为事件)。SSE 还定义了一个专门的媒体类型 [text/event-stream](http://www.w3.org/TR/2009/WD-eventsource-20091029/#text-event-stream),描述一个从服务端发送到客户端的简单格式。SSE 还提供在大多数现代浏览器里的标准 javascript 客户端 API 实现。关于 SSE 的更多信息,请参见 [SSE API 规范](http://www.w3.org/TR/2009/WD-eventsource-20091029/)。
 	* 优点：HTML5 标准；实现较为简单；一个连接可以发送多个数据
-	* 缺点：IE 不支持 EventSource ；服务器到客户端单向推送数据
+	* 缺点：IE 不支持 EventSource ；服务器只能单向推送数据到客户端
 
 ![](../images/sse-real-time-web-03.jpg)
 
@@ -353,3 +363,4 @@ EventSource 的用法与发布-订阅模式类似。而 send(message) 方法是�
 
 * Data Push Apps with HTML5 SSE（by Darren Cook）
 * [Jersey 2.x 用户指南](https://github.com/waylau/Jersey-2.x-User-Guide)
+* <http://www.ibm.com/developerworks/cn/web/wa-lo-comet/>
