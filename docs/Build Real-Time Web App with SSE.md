@@ -290,7 +290,9 @@ EventSource 的用法与发布-订阅模式类似。而 send(message) 方法是�
 
 ![](../images/sse-real-time-web-08.jpg)
 
-## 错误解决
+## 相关问题
+
+### 异步请求
 
 报如下错误：
 
@@ -365,8 +367,114 @@ EventSource 的用法与发布-订阅模式类似。而 send(message) 方法是�
 		</servlet-mapping>
 	</web-app>
 
+### 跨域请求
+由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。
+
+<table class="border">
+<tbody>
+<tr>
+<th>URL</th>
+<th>说明</th>
+<th>是否允许通信</th> 
+</tr>
+<tr>
+<td>http://www.a.com/a.js<br>
+http://www.a.com/b.js</td>
+<td>同一域名下</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>http://www.a.com/lab/a.js<br>
+http://www.a.com/script/b.js</td>
+<td>同一域名下不同文件夹</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>http://www.a.com:8000/a.js<br>
+http://www.a.com/b.js</td>
+<td>同一域名，不同端口</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>http://www.a.com/a.js<br>
+https://www.a.com/b.js</td>
+<td>同一域名，不同协议</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>http://www.a.com/a.js<br>
+http://70.32.92.74/b.js</td>
+<td>域名和域名对应ip</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>http://www.a.com/a.js<br>
+http://script.a.com/b.js</td>
+<td>主域相同，子域不同</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>http://www.a.com/a.js<br>
+http://a.com/b.js
+</td>
+<td>同一域名，不同二级域名（同上）</td>
+<td>不允许（cookie这种情况下也不允许访问）</td>
+</tr>
+<tr>
+<td>http://www.cnblogs.com/a.js<br>
+http://www.a.com/b.js</td>
+<td>不同域名</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+
+
+出于安全考虑，默认是不允许跨域访问的，会报如下异常：
+
+![](../images/sse-real-time-web-10.jpg)
+
+解决是服务器启动 [CORS](http://www.w3.org/TR/cors/)。
+
+先是做一个过滤器 CrossDomainFilter.java，将响应头“Access-Control-Allow-Origin”设置为“*”
+
+	@Override
+	public void filter(ContainerRequestContext requestContext,
+			ContainerResponseContext responseContext) throws IOException {
+		
+		// 响应头添加了对允许访问的域，* 代表是全部域
+		responseContext.getHeaders().add("Access-Control-Allow-Origin", "*"); 
+
+	}
+
+在 RestApplication 里，注册该过滤器即可。
+
+	public class RestApplication extends ResourceConfig {
+	
+		public RestApplication() {
+			// 资源类所在的包路径  
+		    packages("com.waylau.rest.resource");
+		    
+		    // 注册 MultiPart
+		    register(MultiPartFeature.class);
+		    
+		    // 注册CORS过滤器
+		    register(CrossDomainFilter.class);
+		}
+	}
+
+这样，就能跨域访问了，如下，192.168.11.103 可以访问 192.168.11.125 站下的资源
+
+![](../images/sse-real-time-web-11.jpg)
+
+
+## 源码
+
+见 `sse-real-time-web` 项目
+
 ##参考：
 
 * Data Push Apps with HTML5 SSE（by Darren Cook）
 * [Jersey 2.x 用户指南](https://github.com/waylau/Jersey-2.x-User-Guide)
 * <http://www.ibm.com/developerworks/cn/web/wa-lo-comet/>
+* <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>
