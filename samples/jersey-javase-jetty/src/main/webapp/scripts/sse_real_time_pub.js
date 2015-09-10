@@ -1,11 +1,11 @@
 
 /**
- * Created by waylau.com on 2015/8/22
+ * Created by waylau.com on 2015/8/18.
  */
 
 //判断浏览器是否支持 EventSource
 if (typeof (EventSource) !== "undefined") {
-    var source = new EventSource("http://192.168.11.125:8081/webapi/see-events");
+    var source = new EventSource("webapi/see-events");
 
     // 当通往服务器的连接被打开
     source.onopen = function(event) {

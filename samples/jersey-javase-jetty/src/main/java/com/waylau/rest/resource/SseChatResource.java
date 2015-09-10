@@ -2,8 +2,6 @@ package com.waylau.rest.resource;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.inject.Singleton;
 import javax.ws.rs.DefaultValue;
@@ -30,9 +28,6 @@ public class SseChatResource {
 
     private SseBroadcaster broadcaster = new SseBroadcaster();
     
-    private Map<String, EventOutput> eventOutputMap = new HashMap<String, EventOutput>();// 存储连接数
-    
-    private long countId = 0;
     /**
      * 提供 SSE 事件输出通道的资源方法
      * @return eventOutput
@@ -41,10 +36,7 @@ public class SseChatResource {
     @Produces(SseFeature.SERVER_SENT_EVENTS)
     public EventOutput listenToBroadcast() {
         EventOutput eventOutput = new EventOutput();
-        this.eventOutputMap.put(countId+"", eventOutput);
         this.broadcaster.add(eventOutput);
-        this.countId ++;
-        System.out.println( "countId:"+countId + "加入,共计："+ eventOutputMap.size());
         return eventOutput;
     }
     

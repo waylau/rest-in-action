@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.waylau</groupId>
-	<artifactId>sse-real-time-web</artifactId>
+	<artifactId>jersey-javase-jetty</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>sse-real-time-web</name>
+	<version>1.0.0</version>
+	<name>jersey-javase-jetty</name>
 
 	<build>
-		<finalName>sse-real-time-web</finalName>
+		<finalName>jersey-javase-jetty</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -21,18 +21,6 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
-			</plugin>
-			<!-- 如果内嵌 tomcat 就去掉该段注释 -->
-			<!-- 
-			<plugin> 
-				<groupId>org.apache.tomcat.maven</groupId> 
-				<artifactId>tomcat7-maven-plugin</artifactId> 
-				<version>${tomcat7.version}</version> 
-			</plugin> -->
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -50,10 +38,8 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.glassfish.jersey.containers</groupId> <artifactId>jersey-container-servlet</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-multipart</artifactId>
@@ -63,20 +49,42 @@
 			<artifactId>jersey-media-moxy</artifactId>
 		</dependency>
 		<!-- 如果是 jackson 来序列化 就去掉该段注释 -->
-		<!-- 
-		<dependency> 
-			<groupId>org.glassfish.jersey.media</groupId> 
-			<artifactId>jersey-media-json-jackson</artifactId> 
-		</dependency> -->
+		<!-- <dependency> <groupId>org.glassfish.jersey.media</groupId> <artifactId>jersey-media-json-jackson</artifactId> 
+			</dependency> -->
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-sse</artifactId>
-		</dependency> 
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-sse</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-jetty-http</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-jetty-servlet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>?{jetty.version}</version>
+		</dependency>
+
+<!--  		<dependency>
+		    <groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-grizzly2-http</artifactId>
+		</dependency>
+		-->
+		
 	</dependencies>
 	<properties>
 		<jersey.version>2.21</jersey.version>
 		<tomcat7.version>2.2</tomcat7.version>
-		<jetty.version>9.2.9.v20150224</jetty.version>
+
+		<jetty.version>9.3.3.v20150827</jetty.version>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 </project>
