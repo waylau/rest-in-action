@@ -4,9 +4,6 @@ package com.waylau.rest;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import com.waylau.rest.filter.CrossDomainFilter;
- 
-
 /**
  * REST 主应用
  * 
@@ -21,8 +18,6 @@ public class RestApplication extends ResourceConfig {
 	    
 	    // 注册 MultiPart
 	    register(MultiPartFeature.class);
-	    
-	    // 注册CORS过滤器
-	    register(CrossDomainFilter.class);
+ 
 	}
 }
