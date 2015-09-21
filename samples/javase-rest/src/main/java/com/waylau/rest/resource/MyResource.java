@@ -1,8 +1,12 @@
 package com.waylau.rest.resource;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.waylau.rest.bean.MyBean;
@@ -60,6 +64,27 @@ public class MyResource {
     	pojo.setAge(28);
         return pojo;
     }
- 
+    
+    @DELETE
+    @Path("pojojson")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deletePojoJson(@QueryParam("name") String name ) {
+        return  "You delete " + name;
+    }
+    
+    @DELETE
+    @Path("pojojson/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deletePojoJsonPath(@PathParam("name") String name ) {
+        return  "You delete " + name;
+    }
+    
+    //下面的例子是无法接收到 body 作为参数的反面例子
+//    @DELETE
+//    @Path("pojojson")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public String deletePojoJsonBody(@QueryParam("name") String name ) {
+//        return  "You delete " + name;
+//    }
  
 }
