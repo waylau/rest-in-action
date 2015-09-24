@@ -24,7 +24,7 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
         WebAppContext context = new WebAppContext();
-        //context.setDescriptor("./webapp/WEB-INF/web.xml");
+        context.setDescriptor("./webapp/WEB-INF/web.xml");
         context.setParentLoaderPriority(true);
         context.setResourceBase("./webapp");
         context.setContextPath("/");

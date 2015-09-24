@@ -5,7 +5,7 @@
 
 //判断浏览器是否支持 EventSource
 if (typeof (EventSource) !== "undefined") {
-    var source = new EventSource("http://192.168.11.125:8081/webapi/alarm-events?entId="+22);
+    var source = new EventSource("http://192.168.11.220:8081/webapi/alarm-events?entId="+22);
 
     // 当通往服务器的连接被打开
     source.onopen = function(event) {
