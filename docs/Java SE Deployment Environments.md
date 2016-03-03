@@ -40,8 +40,8 @@ Grizzly 容器支持 HTTP 注射 Grizzly 的特性 org.glassfish.grizzly.http.se
 Jersey 和 Grizzly HTTP Server 用法：
 
 	URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
-	    ResourceConfig config = new ResourceConfig(MyResource.class);
-	    HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config);
+	ResourceConfig config = new ResourceConfig(MyResource.class);
+	HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri, config);
 
 容器扩展模块依赖要加入:
 
@@ -62,8 +62,8 @@ Simple 的框架支持 HTTP 容器注入 Simple 框架特性 的org.simpleframew
 Jersey 和 Simple 框架用法：
 
 	URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
-	    ResourceConfig config = new ResourceConfig(MyResource.class);
-	    SimpleContainer server = SimpleContainerFactory.create(baseUri, config);
+	ResourceConfig config = new ResourceConfig(MyResource.class);
+	SimpleContainer server = SimpleContainerFactory.create(baseUri, config);
 
 容器扩展模块依赖要加入:
  
