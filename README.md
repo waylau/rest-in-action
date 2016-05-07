@@ -12,8 +12,10 @@ Let's [READ](SUMMARY.md)!
 
 选择下面入口之一：
 
-* <https://github.com/waylau/rest-in-action> 的 [SUMMARY.md](SUMMARY.md)
+* <https://github.com/waylau/rest-in-action> 的 [SUMMARY.md](SUMMARY.md) 
+* <http://git.oschina.net/waylau/rest-in-action> 的 [SUMMARY.md](SUMMARY.md) (国内访问速度快)
 * <http://waylau.gitbooks.io/rest-in-action> 的 Read 按钮
+
 
 ### Code 源码
 
