@@ -8,6 +8,7 @@ This is the summary of my book.
 * [Rapid Development 快速开发](docs/Rapid Development.md)
 * [Custom ResourceConfig 自定义资源配置](docs/Custom ResourceConfig.md)
 * [Handle JSON and XML 处理 JSON 和 XML](docs/Handle JSON and XML.md)
+* [Encoding Format 处理编码问题](docs/Encoding Format.md)
 * [Java SE Deployment Environments 使用 Java SE 部署环境](docs/Java SE Deployment Environments.md)
 * [Simulation of CURD 模拟CURD操作](docs/Simulation of CURD.md)
 * [Parameter Annotations 常用参数注解](docs/Parameter Annotations.md)

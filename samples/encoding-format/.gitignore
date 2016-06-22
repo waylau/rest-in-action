@@ -1,6 +1,2 @@
+/build/
 /target/
-/.idea/
-/.settings/
-.classpath
-.project
-_book
