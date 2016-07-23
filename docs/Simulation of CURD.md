@@ -198,7 +198,7 @@ Simulation of CURD 模拟CURD操作
 
 与上面类似，也是用到了`@Path("{id}")`
 
-![](../images/simulation-curd-06.jpg)
+![](../images/simulation-curd-07.jpg)
 
 我们看到用户1被删除了。
 
