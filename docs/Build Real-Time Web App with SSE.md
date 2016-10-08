@@ -224,12 +224,12 @@ WebSocket 相较 SSE 最大的优势在于它是双向交流的，这意味向�
 	        broadcaster.broadcast(event);
 	     }
 	}
-让我们一起探索这个例子。SseChatResource 资源类注释 用 [@Singleton](http://docs.oracle.com/javaee/7/api/javax/inject/Singleton.html) 注解,告诉 Jersey 运行时,只有一个实例的资源类应该用于所有传入请求 `/sse-chat` 路径。这是需要我们想让一个应用程序范围单一引用私有的 broadcaster 字段,这样我们为所有请求可以使用相同的实例。客户端想监听 SSE 事件，先发送 GET 请求到 sse-chat 的 listenToBroadcast() 资源方法处理。方法创建一个新的 EventOutput 用于展示请求的客户端的连接，并通过 add(EventOutput)  注册 eventOutput 实例到单例 broadcaster。方法返回 eventOutput 导致 Jersey 使请求的客户端事件与 eventOutput 实例绑定,向客户机发送响应 HTTP 头。客户端连接保持开放,客户端等待准备接收新的 SSE 事件。所有的事件通过 broadcaster  写入 eventOutput。这样开发人员可以方便地处理发送新的事件到所有订阅的客户端。
 
-当客户机想要广播新消息给所有的已经监听 SSE 连接的客户端,它发送一个POST 请求 SseChatResource 资源消息内容。 SseChatResource 资源上调用方法 broadcastMessage，消息内容作为输入参数。一个新的 SSE 出站事件是建立在标准方法并传递给 broadcaster。 broadcaster 内部调用 write(OutboundEvent)  在所有注册了的 EventOutput 上。当该方法只是返回一个标准文本响应给客户端，来通知客户端已经成功广播了消息。正如您可以看到的, broadcastMessage 资源方法只是一个简单的  JAX-RS 资源的方法。
+其中，SseChatResource 资源类用 [@Singleton](http://docs.oracle.com/javaee/7/api/javax/inject/Singleton.html) 注解，告诉 Jersey 运行时，资源类只有一个实例，用于所有传入`/sse-chat`路径的请求。应用程序引用私有的 broadcaster 字段，这样我们为所有请求可以使用相同的实例。客户端想监听 SSE 事件，先发送 GET 请求到`sse-chat`的 listenToBroadcast() 资源方法处理。方法创建一个新的 EventOutput 用于展示请求的客户端的连接，并通过 add(EventOutput)  注册 eventOutput 实例到单例 broadcaster。方法返回 eventOutput 导致 Jersey 使请求的客户端事件与 eventOutput 实例绑定，向客户机发送响应 HTTP 头。客户端连接保持开放，客户端等待准备接收新的 SSE 事件。所有的事件通过 broadcaster  写入 eventOutput。这样开发人员可以方便地处理发送新的事件到所有订阅的客户端。
 
-为了实现这种情况下,您可能已经注意到,Jersey SseBroadcaster 完成用例不是强制性的。单个 [EventOutput](https://jersey.java.net/apidocs/2.21/jersey/org/glassfish/jersey/media/sse/EventOutput.html) 可以只是存储在收集器里，并且迭代 broadcastMessage 方法。然而,SseBroadcaster 内部识别和处理客户端断开连接。当客户端关闭连接， broadcaster 可检测并删除过期的内部收集器里面注册了 [EventOutput](https://jersey.java.net/apidocs/2.21/jersey/org/glassfish/jersey/media/sse/EventOutput.html)的连接，以及释放所有服务器端资源关联的陈旧的连接。此外,SseBroadcaster 实现线程安全的,这样客户可以在任何时间和连接和断开 SseBroadcaster 总是广播消息最近收集的注册和活跃的客户端。
+当客户端想要广播新消息给所有的已经监听 SSE 连接的客户端时，它先发送一个 POST 请求将消息内容发到 SseChatResource 资源。 SseChatResource 资源调用方法 broadcastMessage，消息内容作为输入参数。一个新的 SSE 出站事件是建立在标准方法上并传递给 broadcaster。broadcaster 内部在所有注册了的 EventOutput 上调用 write(OutboundEvent) 。当该方法只返回一个标准文本响应给客户端，来通知客户端已经成功广播了消息。正如您可以看到的， broadcastMessage 资源方法只是一个简单的 JAX-RS 资源的方法。
 
+您可能已经注意到，Jersey SseBroadcaster 完成该用例不是强制性的。每个 [EventOutput](https://jersey.java.net/apidocs/2.21/jersey/org/glassfish/jersey/media/sse/EventOutput.html) 可以只是存储在收集器里，在 broadcastMessage 方法里面迭代。然而，SseBroadcaster 内部会识别和处理客户端断开连接。当客户端关闭了连接，broadcaster 可检测并删除过期的在内部收集器里面注册了 [EventOutput](https://jersey.java.net/apidocs/2.21/jersey/org/glassfish/jersey/media/sse/EventOutput.html) 的连接，以及释放所有服务器端关联了陈旧连接的资源。此外，SseBroadcaster 的实现是线程安全的，这样客户端可以在任何时间连接和断开， SseBroadcaster 总是广播消息给最近收集的注册和活跃的客户端。
 
 #### 客户端代码：
 
@@ -284,7 +284,7 @@ WebSocket 相较 SSE 最大的优势在于它是双向交流的，这意味向�
 	    xmlhttp.send();
 	}
 
-EventSource 的用法与发布-订阅模式类似。而 send(message) 方法是将消息已 POST 请求发送给服务端，而后将该消息进行广播，从而达到了聊天室的效果。
+EventSource 的用法与发布-订阅模式类似。而 send(message) 方法是将消息以 POST 请求发送给服务端，而后将该消息进行广播，从而达到了聊天室的效果。
 
 #### 效果
 
