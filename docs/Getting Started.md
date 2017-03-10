@@ -18,16 +18,17 @@ OK,这就是所有必需的环境。当然，你可以根据自己的喜好选�
 
 在工作目录，创建第一个 Maven 管理的应用，执行 
 
-	mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false -DgroupId=com.waylau -DartifactId=simple-service-webapp -Dpackage=com.waylau.rest -DarchetypeVersion=2.16
+```
+mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false -DgroupId=com.waylau -DartifactId=simple-service-webapp -Dpackage=com.waylau.rest -DarchetypeVersion=2.16
+```
 
-![](http://99btgc01.info/uploads/2015/03/first-rest-app-00.jpg)
-
-![](http://99btgc01.info/uploads/2015/03/first-rest-app-01.jpg)
 
 
 项目打包成 WAR,执行:
 
-	mvn clean package
+```
+mvn clean package
+```
 
 打包成功后，打包的 WAR（位于`./target/simple-service-webapp.war`）可以将它部署到您任意的 Servlet 容器，比如 [Tomcat](http://tomcat.apache.org/)、 [Jetty](http://www.eclipse.org/jetty/)、JBoss 等。
  
